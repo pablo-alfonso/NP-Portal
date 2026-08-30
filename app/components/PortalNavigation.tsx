@@ -6,7 +6,7 @@ type Props = { isAdmin: boolean; active: "bill" | "settings"; collapsed: boolean
 
 export function PortalNavigation({ isAdmin, active, collapsed, onToggle, onBillOfLading }: Props) {
   return <aside className={`portal-navigation ${collapsed ? "collapsed" : ""}`} aria-label="Portal navigation">
-    <Link href="/" onClick={(event) => { if (onBillOfLading) { event.preventDefault(); onBillOfLading(); } }} className="portal-logo"><Image src="/brand/newport-logo.png" alt="NewPort" width={150} height={40} priority /></Link>
+    <Link href="/" onClick={(event) => { if (onBillOfLading) { event.preventDefault(); onBillOfLading(); } }} className="portal-logo"><Image src="/NP-Portal/brand/newport-logo.png" alt="NewPort" width={150} height={40} priority /></Link>
     <p className="portal-section">Workspace</p>
     <Link className={active === "bill" ? "portal-item active" : "portal-item"} href="/" onClick={(event) => { if (onBillOfLading) { event.preventDefault(); onBillOfLading(); } }}>▤<b>Bill of Lading</b></Link>
     {isAdmin && <><p className="portal-section administration">Administration</p><Link className={active === "settings" ? "portal-item active" : "portal-item"} href="/admin/users">⚙<b>Settings</b></Link></>}
