@@ -30,7 +30,7 @@ function createdDateKey(value: string) {
   return `${year}-${months[month]}-${day.padStart(2, "0")}`;
 }
 
-function DetailPage({ bill, onBack, onApproved, onCorrectionsSubmitted }: { bill: Bill; onBack: () => void; onApproved: () => void; onCorrectionsSubmitted: () => void }) {
+function DetailPage({ bill, accountLabel, onBack, onApproved, onCorrectionsSubmitted }: { bill: Bill; accountLabel: string; onBack: () => void; onApproved: () => void; onCorrectionsSubmitted: () => void }) {
   const [approvalOpen, setApprovalOpen] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [approved, setApproved] = useState(false);
@@ -38,11 +38,11 @@ function DetailPage({ bill, onBack, onApproved, onCorrectionsSubmitted }: { bill
   const canApprove = bill.status === "Awaiting approval" && !approved && !hasCorrections;
 
   return <section className="detail-shell">
-    <header className="detail-top">
+    <header className="topbar detail-accountbar"><span>Customer portal</span><button className="account">{accountLabel} ▾</button></header>
+    <header className="detail-top" style={{ height: 52 }}>
       <button className="back" onClick={onBack}>←&nbsp; Back to Bills of Lading</button>
-      <div><span className={`status ${(approved ? "Awaiting final" : bill.status).replaceAll(" ", "-")}`}>{approved ? "Awaiting Final" : humanStatus(bill.status)}</span>{(approved || bill.status === "Awaiting final") && <span className="approved-chip">✓ Approved</span>}</div>
     </header>
-    <div className="detail-title"><strong>Combined Transport Bill of Lading</strong><small>B/L no. {bill.number} · Draft 2 · Updated 26 Aug 2026</small></div>
+    <div className="detail-title" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}><div><strong>Combined Transport Bill of Lading</strong><small>B/L no. {bill.number} · Draft 2 · Updated 26 Aug 2026</small></div><div className="detail-status" style={{ display: "flex", alignItems: "center", gap: 8 }}><span className={`status ${(approved ? "Awaiting final" : bill.status).replaceAll(" ", "-")}`}>{approved ? "Awaiting Final" : humanStatus(bill.status)}</span>{(approved || bill.status === "Awaiting final") && <span className="approved-chip">✓ Approved</span>}</div></div>
     <div className="split">
       <section className="pdf-area" aria-label="Bill of Lading document preview">
         <div className="zoom">− &nbsp;&nbsp; 72% &nbsp;&nbsp; + &nbsp;&nbsp; ⛶</div>
@@ -107,7 +107,7 @@ export default function Home() {
   return <main className={`portal-shell ${collapsed ? "portal-collapsed" : ""}`}>
     <PortalNavigation isAdmin={isAdmin} active="bill" collapsed={collapsed} onToggle={() => setCollapsed(value => !value)} onBillOfLading={() => setSelected(null)} />
     <section className="portal-content">
-      {selected ? <DetailPage bill={selected} onBack={() => setSelected(null)} onApproved={() => setBillList(current => current.map(item => item.number === selected.number ? { ...item, status: "Awaiting final" } : item))} onCorrectionsSubmitted={() => setBillList(current => current.map(item => item.number === selected.number ? { ...item, status: "Awaiting corrected draft" } : item))} /> : <>
+      {selected ? <DetailPage bill={selected} accountLabel={isAdmin ? "Pablo Alfonso · NewPort" : "Afton Chemicals"} onBack={() => setSelected(null)} onApproved={() => setBillList(current => current.map(item => item.number === selected.number ? { ...item, status: "Awaiting final" } : item))} onCorrectionsSubmitted={() => setBillList(current => current.map(item => item.number === selected.number ? { ...item, status: "Awaiting corrected draft" } : item))} /> : <>
         <header className="topbar"><span>Customer portal</span><div className="account-wrap"><button className="account" onClick={() => setAccountOpen(value => !value)}>{isAdmin ? "Pablo Alfonso · NewPort" : "Afton Chemicals"} ▾</button>{accountOpen && <div className="account-menu"><span>Demo account</span><button onClick={() => setDemoRole(false)}>Afton Chemicals<small>Customer portal</small></button><button onClick={() => setDemoRole(true)}>Pablo Alfonso<small>NewPort administrator</small></button></div>}</div></header>
         <section className="page"><div className="heading"><h1>Bill of Lading</h1><p>All drafts and issued Bills of Lading available to your organisation.</p></div>
           <div className="controls"><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search BL number, customer reference, product…" /><button className={filtersOpen ? "filters-active" : ""} onClick={() => setFiltersOpen(value => !value)}>☷&nbsp; Filters</button></div>
