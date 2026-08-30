@@ -105,7 +105,7 @@ export default function Home() {
   const optionsFor = (key: "product" | "loading" | "discharge" | "delivery") => [...new Set(billList.map((bill) => bill[key]))].sort();
 
   return <main className={`portal-shell ${collapsed ? "portal-collapsed" : ""}`}>
-    <PortalNavigation isAdmin={isAdmin} active="bill" collapsed={collapsed} onToggle={() => setCollapsed(value => !value)} />
+    <PortalNavigation isAdmin={isAdmin} active="bill" collapsed={collapsed} onToggle={() => setCollapsed(value => !value)} onBillOfLading={() => setSelected(null)} />
     <section className="portal-content">
       {selected ? <DetailPage bill={selected} onBack={() => setSelected(null)} onApproved={() => setBillList(current => current.map(item => item.number === selected.number ? { ...item, status: "Awaiting final" } : item))} onCorrectionsSubmitted={() => setBillList(current => current.map(item => item.number === selected.number ? { ...item, status: "Awaiting corrected draft" } : item))} /> : <>
         <header className="topbar"><span>Customer portal</span><div className="account-wrap"><button className="account" onClick={() => setAccountOpen(value => !value)}>{isAdmin ? "Pablo Alfonso · NewPort" : "Afton Chemicals"} ▾</button>{accountOpen && <div className="account-menu"><span>Demo account</span><button onClick={() => setDemoRole(false)}>Afton Chemicals<small>Customer portal</small></button><button onClick={() => setDemoRole(true)}>Pablo Alfonso<small>NewPort administrator</small></button></div>}</div></header>
