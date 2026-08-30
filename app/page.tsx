@@ -40,7 +40,7 @@ function DetailPage({ bill, onBack, onApproved, onCorrectionsSubmitted }: { bill
   return <section className="detail-shell">
     <header className="detail-top">
       <button className="back" onClick={onBack}>←&nbsp; Back to Bills of Lading</button>
-      <div><span className={`status ${(approved ? "Awaiting final" : bill.status).replaceAll(" ", "-")}`}>{approved ? "Awaiting Final" : humanStatus(bill.status)}</span>{(approved || bill.status === "Awaiting final") && <span className="approved-chip">✓ Approved</span>}<button className="download">⇩&nbsp; Download PDF</button>{bill.status === "Awaiting approval" && !approved && <button className="approve-button" disabled={!canApprove} title={hasCorrections ? "Submit or discard your requested changes before approving." : undefined} onClick={() => setApprovalOpen(true)}>✓&nbsp; Approve</button>}</div>
+      <div><span className={`status ${(approved ? "Awaiting final" : bill.status).replaceAll(" ", "-")}`}>{approved ? "Awaiting Final" : humanStatus(bill.status)}</span>{(approved || bill.status === "Awaiting final") && <span className="approved-chip">✓ Approved</span>}</div>
     </header>
     <div className="detail-title"><strong>Combined Transport Bill of Lading</strong><small>B/L no. {bill.number} · Draft 2 · Updated 26 Aug 2026</small></div>
     <div className="split">
@@ -52,7 +52,7 @@ function DetailPage({ bill, onBack, onApproved, onCorrectionsSubmitted }: { bill
           <div className="paper-lines" /><div className="watermark">DRAFT SEAWAY BILL OF LADING</div>
         </article>
       </section>
-      <CorrectionEditor onChangesChange={setHasCorrections} onSubmitted={() => { onCorrectionsSubmitted(); onBack(); }} />
+      <CorrectionEditor onChangesChange={setHasCorrections} onSubmitted={() => { onCorrectionsSubmitted(); onBack(); }} footerActions={<><button className="download">⇩&nbsp; Download PDF</button>{bill.status === "Awaiting approval" && !approved && <button className="approve-button" disabled={!canApprove} title={hasCorrections ? "Submit or discard your requested changes before approving." : undefined} onClick={() => setApprovalOpen(true)}>✓&nbsp; Approve</button>}</>} />
     </div>
     {approvalOpen && <div className="approval-overlay" role="dialog" aria-modal="true" aria-labelledby="approval-title">
       <section className="approval-dialog">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import "./correction-editor.css";
 
 type Step = "Parties" | "Routing" | "Cargo details" | "Container & weights" | "References";
@@ -70,12 +70,12 @@ function ToggleField({ label, checked, onChange, onValueChange }: { label: strin
   return <div className={`toggle-wrap ${edited ? "is-changed" : ""}`}><label className="bl-toggle"><input type="checkbox" checked={current} onChange={event => update(event.target.checked)} /><span aria-hidden="true" /><b>{label}</b></label>{edited && <ChangeNotice onUndo={() => update(checked)} />}</div>;
 }
 
-export function CorrectionEditor({ onChangesChange = () => {}, onSubmitted = () => {} }: { onChangesChange?: (hasChanges: boolean) => void; onSubmitted?: () => void }) {
+export function CorrectionEditor({ onChangesChange = () => {}, onSubmitted = () => {}, footerActions }: { onChangesChange?: (hasChanges: boolean) => void; onSubmitted?: () => void; footerActions?: ReactNode }) {
   const [resetKey, setResetKey] = useState(0);
-  return <CorrectionEditorForm key={resetKey} onChangesChange={onChangesChange} onSubmitted={onSubmitted} onDiscard={() => setResetKey(key => key + 1)} />;
+  return <CorrectionEditorForm key={resetKey} onChangesChange={onChangesChange} onSubmitted={onSubmitted} footerActions={footerActions} onDiscard={() => setResetKey(key => key + 1)} />;
 }
 
-function CorrectionEditorForm({ onDiscard, onChangesChange, onSubmitted }: { onDiscard: () => void; onChangesChange: (hasChanges: boolean) => void; onSubmitted: () => void }) {
+function CorrectionEditorForm({ onDiscard, onChangesChange, onSubmitted, footerActions }: { onDiscard: () => void; onChangesChange: (hasChanges: boolean) => void; onSubmitted: () => void; footerActions?: ReactNode }) {
   const [active, setActive] = useState<Step>("Parties");
   const [changedFields, setChangedFields] = useState<Record<string, { from: string; to: string }>>({});
   const [submissionStage, setSubmissionStage] = useState<"editing" | "review" | "submitted">("editing");
@@ -169,6 +169,6 @@ function CorrectionEditorForm({ onDiscard, onChangesChange, onSubmitted }: { onD
         </section>
       </div>
     </div>
-    <footer className="bl-editor-footer"><span>{changes ? `${changes} change${changes === 1 ? "" : "s"} in this session` : "No changes yet"}</span><div><button onClick={onDiscard} disabled={!changes}>Discard all changes</button><button className="primary" disabled={!changes} onClick={() => setSubmissionStage("review")}>Submit corrections</button></div></footer>{submissionStage === "review" && reviewOverlay}{submissionStage === "submitted" && successOverlay}
+    <footer className="bl-editor-footer"><span>{changes ? `${changes} change${changes === 1 ? "" : "s"} in this session` : "No changes yet"}</span><div className="editor-actions">{footerActions}<button onClick={onDiscard} disabled={!changes}>Discard all changes</button><button className="primary" disabled={!changes} onClick={() => setSubmissionStage("review")}>Submit corrections</button></div></footer>{submissionStage === "review" && reviewOverlay}{submissionStage === "submitted" && successOverlay}
   </section>;
 }
