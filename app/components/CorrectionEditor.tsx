@@ -122,11 +122,11 @@ function CorrectionEditorForm({ onDiscard, onChangesChange, onSubmitted, footerA
         </section>
         <section hidden={active !== "Routing"} className="editor-step-content">
           <h2>Routing</h2><p>Movement details for this Bill of Lading</p>
-          <div className="bl-field-grid">
-            <LocationField label="Place of receipt" value="Emmerich, Germany" options={["Emmerich, Germany", "Düsseldorf, Germany"]} onChange={changed} />
-            <LocationField label="Port of loading" value="Antwerp, Belgium" options={["Antwerp, Belgium", "Rotterdam, Netherlands"]} onChange={changed} />
-            <LocationField label="Port of discharge" value="Yilport, Turkey" options={["Yilport, Turkey", "Istanbul, Turkey"]} onChange={changed} />
-            <LocationField label="Place of delivery" value="Yilport, Turkey" options={["Yilport, Turkey", "Istanbul, Turkey"]} onChange={changed} />
+          <div className="route-flow">
+            <div className="route-stop"><span className="route-icon">▰</span><LocationField label="Place of receipt" value="Emmerich, Germany" options={["Emmerich, Germany", "Düsseldorf, Germany"]} onChange={changed} /></div>
+            <div className="route-stop"><span className="route-icon">⚓</span><LocationField label="Port of loading" value="Antwerp, Belgium" options={["Antwerp, Belgium", "Rotterdam, Netherlands"]} onChange={changed} /></div>
+            <div className="route-stop"><span className="route-icon">⚓</span><LocationField label="Port of discharge" value="Yilport, Turkey" options={["Yilport, Turkey", "Istanbul, Turkey"]} onChange={changed} /></div>
+            <div className="route-stop"><span className="route-icon">▰</span><LocationField label="Place of delivery" value="Yilport, Turkey" options={["Yilport, Turkey", "Istanbul, Turkey"]} onChange={changed} /></div>
           </div>
         </section>
         <section hidden={active !== "Cargo details"} className="editor-step-content">
