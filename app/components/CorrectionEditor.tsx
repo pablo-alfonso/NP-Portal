@@ -7,6 +7,12 @@ type Step = "Parties" | "Routing" | "Cargo details" | "Container & weights" | "R
 
 const steps: Step[] = ["Parties", "Routing", "Cargo details", "Container & weights", "References"];
 
+function RouteIcon({ type }: { type: "truck" | "ship" }) {
+  return <span className="route-icon" aria-hidden="true">
+    {type === "truck" ? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h11v10H3z" /><path d="M14 10h4l3 3v3h-7z" /><circle cx="7" cy="18" r="2" /><circle cx="17" cy="18" r="2" /></svg> : <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 17h18l-2 3H5z" /><path d="M6 17V9h8v8" /><path d="M14 9h4l2 4v4" /><path d="M3 21c1.2 1 2.5 1 3.7 0 1.2 1 2.5 1 3.7 0 1.2 1 2.5 1 3.7 0 1.2 1 2.5 1 3.7 0" /></svg>}
+  </span>;
+}
+
 function ChangeNotice({ onUndo }: { onUndo: () => void }) {
   return <div className="field-change"><small>● Changed in this session</small><button type="button" onClick={onUndo}>Undo</button></div>;
 }
@@ -123,10 +129,10 @@ function CorrectionEditorForm({ onDiscard, onChangesChange, onSubmitted, footerA
         <section hidden={active !== "Routing"} className="editor-step-content">
           <h2>Routing</h2><p>Movement details for this Bill of Lading</p>
           <div className="route-flow">
-            <div className="route-stop"><span className="route-icon">▰</span><LocationField label="Place of receipt" value="Emmerich, Germany" options={["Emmerich, Germany", "Düsseldorf, Germany"]} onChange={changed} /></div>
-            <div className="route-stop"><span className="route-icon">⚓</span><LocationField label="Port of loading" value="Antwerp, Belgium" options={["Antwerp, Belgium", "Rotterdam, Netherlands"]} onChange={changed} /></div>
-            <div className="route-stop"><span className="route-icon">⚓</span><LocationField label="Port of discharge" value="Yilport, Turkey" options={["Yilport, Turkey", "Istanbul, Turkey"]} onChange={changed} /></div>
-            <div className="route-stop"><span className="route-icon">▰</span><LocationField label="Place of delivery" value="Yilport, Turkey" options={["Yilport, Turkey", "Istanbul, Turkey"]} onChange={changed} /></div>
+            <div className="route-stop"><RouteIcon type="truck" /><LocationField label="Place of receipt" value="Emmerich, Germany" options={["Emmerich, Germany", "Düsseldorf, Germany"]} onChange={changed} /></div>
+            <div className="route-stop"><RouteIcon type="ship" /><LocationField label="Port of loading" value="Antwerp, Belgium" options={["Antwerp, Belgium", "Rotterdam, Netherlands"]} onChange={changed} /></div>
+            <div className="route-stop"><RouteIcon type="ship" /><LocationField label="Port of discharge" value="Yilport, Turkey" options={["Yilport, Turkey", "Istanbul, Turkey"]} onChange={changed} /></div>
+            <div className="route-stop"><RouteIcon type="truck" /><LocationField label="Place of delivery" value="Yilport, Turkey" options={["Yilport, Turkey", "Istanbul, Turkey"]} onChange={changed} /></div>
           </div>
         </section>
         <section hidden={active !== "Cargo details"} className="editor-step-content">
