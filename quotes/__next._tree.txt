@@ -1,0 +1,4 @@
+:HL["/NP-Portal/_next/static/chunks/0800d9250b0598a6.css","style"]
+:HL["/NP-Portal/_next/static/chunks/e40da1a657bcf506.css","style"]
+:HL["/NP-Portal/_next/static/chunks/531fd4e99c3e51ee.css","style"]
+0:{"buildId":"jbRcCSWOFdLgZ8Ap-ie-P","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"quotes","paramType":null,"paramKey":"quotes","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
