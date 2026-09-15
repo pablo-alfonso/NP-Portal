@@ -1,0 +1,81 @@
+.quote-shell{grid-template-columns:228px minmax(0,1fr)}
+.quote-shell.portal-collapsed{grid-template-columns:64px minmax(0,1fr)}
+.quote-shell .portal-content{min-width:0}
+.demo-mark{display:inline-block;margin-left:12px;color:#91a39c;font-size:11px}
+.quote-account{border:1px solid var(--line);border-radius:8px;background:#fff;padding:8px 12px;color:var(--ink)}
+.quote-page{padding:32px 34px 50px;max-width:1900px}
+.quote-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+.quote-heading h1{font-size:30px;letter-spacing:-1px;margin:4px 0 5px}
+.quote-heading p{margin:0;color:var(--muted)}
+.quote-heading.detail{align-items:center;margin:15px 0 20px}
+.quote-eyebrow{font-size:10px;font-weight:800;color:var(--green);letter-spacing:1.4px}
+.quote-page button,.quote-page select,.quote-modal button{cursor:pointer}
+.quote-page button:disabled,.quote-modal button:disabled{cursor:not-allowed;opacity:.5}
+.quote-primary{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;background:var(--green);border:1px solid var(--green);border-radius:8px;padding:10px 15px;color:#fff!important;font-weight:700}
+.quote-controls{display:flex;gap:10px;margin:28px 0 18px}
+.quote-controls input{width:min(420px,70vw);border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+.quote-controls button,.quote-actions button,.quote-comments>button,.quote-footer>button,.quote-filters button{border:1px solid var(--line);border-radius:8px;background:#fff;padding:10px 13px;color:var(--ink)}
+.quote-filters{display:flex;align-items:end;gap:18px;background:#f6faf8;border:1px solid var(--line);border-radius:9px;padding:14px;margin-bottom:18px}
+.quote-filters label{font-size:11px;font-weight:700;text-transform:uppercase;color:var(--muted)}
+.quote-filters select{display:block;margin-top:5px;border:1px solid var(--line);border-radius:7px;padding:8px;background:#fff;color:var(--ink)}
+.quote-table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px}
+.quote-table{min-width:1550px}
+.quote-table th,.quote-table td{padding:13px 14px}
+.quote-table th{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#5c7169}
+.quote-table th button{color:inherit;font-size:inherit}
+.quote-table tbody tr:hover{background:#f8fcfa}
+.quote-table td{white-space:normal;min-width:105px;font-size:12px}
+.quote-table td:first-child,.quote-table td:nth-child(2),.quote-table td:nth-child(3){min-width:95px;white-space:nowrap}
+.quote-link{border:0;background:none;color:var(--green);font-weight:700;text-decoration:underline}
+.quote-count{font-size:12px;color:var(--muted);margin-top:16px}
+.quote-status{display:inline-block;padding:5px 9px;border-radius:99px;font-size:11px;font-weight:800;text-transform:uppercase;background:#edf2f0;color:#4c6159}
+.status-draft{background:#e6f1ff;color:#256096}.status-requested{background:#eaf1f9;color:#2f5576}.status-proposed{background:#fff1cf;color:#925f00}.status-accepted{background:#dcf5e8;color:#08754a}.status-declined,.status-cancelled{background:#fce6e4;color:#ab3628}
+.quote-back{border:0;background:none;color:var(--green);font-weight:700;padding:0}
+.quote-actions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:21px}
+.quote-actions .danger-outline{border-color:#e4b6b0;color:#a93629}
+.quote-notice{display:flex;justify-content:space-between;background:#e7f7ee;border:1px solid #bde6cf;border-radius:8px;padding:10px 14px;margin:8px 0 18px;color:#08754a}
+.quote-notice button{border:0;background:none;color:inherit;font-size:18px}
+.quote-tabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin-bottom:23px}
+.quote-tabs button{padding:10px 2px;border:0;border-bottom:2px solid transparent;background:none;color:var(--muted)}
+.quote-tabs button.active{color:var(--green);font-weight:700;border-bottom-color:var(--accent)}
+.quote-groups{display:grid;gap:16px}
+.quote-group{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.quote-group h2{font-size:15px;margin:0;padding:13px 18px;background:#f2f8f5;color:var(--ink)}
+.quote-field-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 22px;padding:19px}
+.quote-field-grid label{display:block;min-width:0}
+.quote-field-grid label>span,.quote-attachments>span,.quote-attachments label{display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;font-weight:800;color:#617a70;margin-bottom:6px}
+.quote-field-grid input,.quote-field-grid select,.quote-field-grid textarea{display:block;width:100%;border:1px solid #cbded5;border-radius:7px;padding:10px 11px;color:var(--ink);background:#fff}
+.quote-field-grid textarea{height:105px;resize:vertical}
+.quote-field-value{display:block;border:1px solid #eef3f0;border-radius:7px;background:#fafcfb;min-height:40px;padding:10px 11px;font-size:13px;font-weight:500;overflow-wrap:anywhere}
+.quote-attachments{border-top:1px solid var(--line);padding:18px 19px;display:flex;flex-wrap:wrap;gap:16px}
+.quote-attachments>span{width:100%;margin:0}
+.quote-attachments label{letter-spacing:0;text-transform:none}
+.quote-attachments input{display:block;margin-top:7px;max-width:220px}
+.quote-attachments small{width:100%;color:var(--muted)}
+.quote-footer{display:flex;justify-content:flex-end;gap:9px;margin-top:20px;border-top:1px solid var(--line);padding-top:18px}
+.quote-footer .quote-primary{background:var(--green)}
+.quote-comments{border-top:1px solid var(--line);margin-top:34px;padding-top:23px;display:grid;grid-template-columns:1fr auto;gap:12px}
+.quote-comments h2{font-size:21px;margin:0 0 2px}
+.quote-comments p{margin:0;color:var(--muted)}
+.quote-empty,.quote-comment{grid-column:1/-1;border:1px solid var(--line);border-radius:9px;padding:18px;color:var(--muted)}
+.quote-comment b{color:var(--green)}.quote-comment p{margin-top:5px}
+.proposal-card{border:1px solid var(--line);border-radius:10px;background:#fff;padding:25px;max-width:980px}
+.proposal-banner{display:flex;justify-content:space-between;gap:16px;border-bottom:3px solid var(--green);padding-bottom:15px}
+.proposal-banner span{font-size:22px;font-weight:900;color:var(--green)}
+.proposal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding:24px 0}
+.proposal-grid small,.proposal-grid b{display:block}
+.proposal-grid small{font-size:10px;color:var(--muted);letter-spacing:.7px}
+.proposal-card h2{margin:5px 0;font-size:19px}
+.proposal-card p{color:var(--muted)}
+.proposal-placeholder{display:grid;place-items:center;height:250px;border:1px dashed #b4cfc1;background:#f6faf8;color:#6e897b;border-radius:8px}
+.quote-modal-backdrop{position:fixed;inset:0;z-index:20;background:#0c423c99;display:grid;place-items:center;padding:20px}
+.quote-modal{width:min(440px,100%);background:#fff;border-radius:12px;padding:30px;box-shadow:0 14px 45px #042b2540}
+.quote-modal h2{font-size:24px;line-height:1.2;margin:7px 0}
+.quote-modal p{color:var(--muted);margin-bottom:20px}
+.quote-modal textarea{width:100%;height:130px;border:1px solid var(--line);border-radius:8px;padding:11px}
+.quote-modal>div{display:flex;justify-content:flex-end;gap:9px;margin-top:22px}
+.quote-modal>div button:not(.quote-primary){border:1px solid var(--line);border-radius:8px;background:#fff;padding:10px 15px}
+.quote-check{display:flex;align-items:flex-start;gap:8px;margin:12px 0;color:var(--ink)}
+.quote-check input{accent-color:var(--green);margin-top:3px}
+@media(max-width:1100px){.quote-field-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.quote-shell,.quote-shell.portal-collapsed{grid-template-columns:1fr}.quote-page{padding:22px}.demo-mark{display:none}.quote-heading{flex-wrap:wrap}.quote-field-grid{grid-template-columns:1fr}.quote-filters{flex-wrap:wrap}}
